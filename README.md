@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Devlog for my terrible projects
+Hey there! This is a fairly simple blog built with Next.js and Mantine (I can't code without a ui framework cause I suck at design). If, for some terrible reason, you want to use this as a template, feel free to fork this repo.
 
-## Getting Started
-
-First, run the development server:
-
+## Installation
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/manuelrodval/devlog
+cd devlog
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Folder structure
+To add new posts, you must include a folder in the `posts` directory with a `post.md` file in it.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+posts/
+├── post-1/           # Post folder
+    ├── post.md       # Markdown post content
+    ├── cover.png     # Cover image. Name can be changed in markdown metadata.
+    ├── example.png   # Image. It is possible to include images in the post using the markdown image syntax.
+├── post-2/           # Post folder
+├── post-2/           # Post folder
+└── ...
 
-## Learn More
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Compatibility and plugins
+You can include some cool (I guess) stuff in your posts using markdown syntax.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+*Youtube videos*
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```markdown
+::yt[TITLE-OF-VIDEO]{YOUTUBE_VIDEO_EMBED_ID}
+```
 
-## Deploy on Vercel
+*Admonitions*
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```markdown
+:::admonition{type="warning" title="This is a warning"}
+Admonition content
+:::
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+*Pictures*
+To include pictures from your post folder, there is an endpoint to serve them and get them from your markdown file.
+`/api/images?post=${postName}&img=${imgName}`
+
+```markdown
+![image-title](imgName)
+```
+
+There is also compatibility with Katex, tables and code highlighting.
+
+## License
+This project is licensed under the MIT License. Do whatever you want with it.
